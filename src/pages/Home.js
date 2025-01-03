@@ -1,5 +1,5 @@
 import './App.css';
-import bunny from "./bunni.gif"
+import bunny from "./bunny.png"
 
 function Home() {
     return (
