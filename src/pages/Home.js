@@ -1,9 +1,13 @@
 import './App.css';
+import bunny from "./bunni.gif"
 
-const Home = () => {
+function Home() {
     return (
-    <h1>Maggie's Little Creatures</h1>
+    <img className="hi" src={bunny} alt="hi" />
     )
   };
+
+
+export default Home;
+
   
-  export default Home;

@@ -2,21 +2,24 @@ import React from 'react';
 import './pages/App.css';
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Art from "./pages/Art.js";
+import Mouse from "./pages/mouse.js";
 import Home from "./pages/Home.js";
 import NoPage from "./pages/NoPage.js"
+import Bear from "./pages/bear.js"
 
 
 export default function App() {
   return (
     <BrowserRouter>
     <nav class="topnav">
-        <Link class="topnav" to="/">Home</Link>
-        <Link class="topnav" to="/Art">Art</Link>
+        <Link class="topnav" to="/">bunny</Link>
+        <Link class="topnav" to="/mouse">mouse</Link>
+        <Link class="topnav" to="/bear">bear</Link>
       </nav>
      <Routes>
      <Route path="/" element={<Home />} />
-      <Route path="/art" element={<Art />} />
+      <Route path="/mouse" element={<Mouse />} />
+      <Route path="/bear" element={<Bear />} />
       <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>
