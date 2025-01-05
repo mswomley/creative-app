@@ -92,7 +92,7 @@ h1, p {
 .image5 {
   width: 100%;
   height: auto;
-  position: absolute;
+  position: relative;
   text-align: center;
   margin: 150px auto auto auto;
   display: block;
