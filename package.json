@@ -35,7 +35,10 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
+    ],
+    "plugins": [
+      ["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
+  ]
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
