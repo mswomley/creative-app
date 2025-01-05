@@ -89,6 +89,17 @@ h1, p {
   animation-iteration-count: infinite;
 }
 
+.image5 {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  text-align: center;
+  margin: 150px auto auto auto;
+  display: block;
+  animation: mymove 40s;
+  animation-iteration-count: infinite;
+}
+
     
 @keyframes spin {
   0% { transform: rotate(0deg); }
@@ -151,6 +162,11 @@ h1, p {
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
+@keyframes mymove {
+  from {top: -700px;}
+  to {top: 300px;}
+}
+
 
 .firstNameBox {
     width: 25%;
@@ -180,4 +196,10 @@ h1, p {
   font-size: 2em;
   margin:0 auto; 
   display: block;
+}
+
+.bg {
+  position: relative;
+  width: 100%;
+  height: auto;
 }

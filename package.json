@@ -7,8 +7,10 @@
     "formik": "^2.4.6",
     "framer-motion": "^11.15.0",
     "motion": "^11.15.0",
+    "rainify": "^1.0.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-native-falling-animation": "^1.0.6",
     "react-scripts": "5.0.1"
   },
   "scripts": {
