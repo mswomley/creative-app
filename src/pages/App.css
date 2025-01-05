@@ -92,7 +92,7 @@ h1, p {
 .image5 {
   width: 100%;
   height: auto;
-  position: relative;
+  position: absolute;
   text-align: center;
   margin: 150px auto auto auto;
   display: block;
@@ -163,8 +163,8 @@ h1, p {
 }
 
 @keyframes mymove {
-  from {top: -700px;}
-  to {top: 300px;}
+  from {left: 0px;}
+  to {left: 500px;}
 }
 
 
