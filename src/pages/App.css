@@ -13,6 +13,14 @@ h1, p {
   padding-top: 1px;
 }
 
+h3 {
+text-align: center;
+  font-family: "Frijole", serif;
+  font-size: 2em;
+  color: rgb(255, 255, 255);
+  padding-top: 1px;
+} 
+
 p1 {
   text-align: center;
   font-family: "Frijole", serif;
@@ -266,4 +274,13 @@ p1 {
 
 .gallery__item:hover {
   transform: scale(1.05);
+}
+
+.buttons {
+  text-align: center;
+  font-family: "Frijole", serif;
+  font-size: 2em;
+  color: rgb(255, 255, 255);
+  padding-top: 1px;
+  margin: auto;
 }

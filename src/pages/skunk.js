@@ -1,30 +1,44 @@
-import React from 'react';
-import './App.css';
-import sk2 from './sk2.png'
-import flower from './flower.png'
+import React, { useState } from 'react';
+import hi from './hi.png'
+import hi2 from './hi2.png'
 
-const images = [
- { src: sk2, alt: 'Image 1' },
-  { src: flower, alt: 'Image 2' },
-  { src: sk2, alt: 'Image 1' },
-  { src: flower, alt: 'Image 2' },
-  { src: sk2, alt: 'Image 1' },
-  { src: flower, alt: 'Image 2' },
-];
+function QuizQuestion() {
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [isCorrect, setIsCorrect] = useState(null);
 
-function Gallery() {
+  const question = {
+    text: 'Select the image of a skunk',
+    options: [
+      { src: hi, id: 'a', text: 'London' },
+      { id: 'b', text: 'Paris' },
+      { id: 'c', text: 'Berlin' },
+      { id: 'd', text: 'Rome' },
+    ],
+    correctAnswer: 'b',
+  };
+
+  const handleAnswerClick = (optionId) => {
+    setSelectedAnswer(optionId);
+    setIsCorrect(optionId === question.correctAnswer);
+  };
+
   return (
-    <div className="gallery">
-      {images.map((image, index) => (
-        <img
-          key={index}
-          className="gallery__item"
-          src={image.src}
-          alt={image.alt}
-        />
+    <div>
+      <h3>{question.text}</h3>
+      {question.options.map((option) => (
+        <button
+          key={option.id}
+          onClick={() => handleAnswerClick(option.id)}
+          className= "buttons"
+        >
+          {option.text}
+        </button>
       ))}
+      {isCorrect !== null && (
+        <p>{isCorrect ? 'Correct!' : 'Incorrect!'}</p>
+      )}
     </div>
   );
 }
 
-export default Gallery;
+export default QuizQuestion;
