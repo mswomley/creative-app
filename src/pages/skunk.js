@@ -1,44 +1,83 @@
-import React, { useState } from 'react';
-import hi from './hi.png'
-import hi2 from './hi2.png'
+import { useState, useEffect } from 'react';
+import skunkimage from './sk2.png'
 
-function QuizQuestion() {
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [isCorrect, setIsCorrect] = useState(null);
+const SkunkGame = () => {
+  const [skunk, setSkunk] = useState([]);
 
-  const question = {
-    text: 'Select the image of a skunk',
-    options: [
-      { src: hi, id: 'a', text: 'London' },
-      { id: 'b', text: 'Paris' },
-      { id: 'c', text: 'Berlin' },
-      { id: 'd', text: 'Rome' },
-    ],
-    correctAnswer: 'b',
+  const setToRandom = (scale) => ({
+    x: Math.random() * scale,
+    y: Math.random() * scale,
+  });
+
+  const makeSkunk = () => {
+    let velocity = setToRandom(10);
+    let position = setToRandom(200);
+    return { position, velocity, id: Date.now() };
   };
 
-  const handleAnswerClick = (optionId) => {
-    setSelectedAnswer(optionId);
-    setIsCorrect(optionId === question.correctAnswer);
+  const updatePositions = () => {
+    setSkunk((prevSkunk) =>
+      prevSkunk.map((sk) => {
+        let newPosition = {
+          x: sk.position.x + sk.velocity.x,
+          y: sk.position.y + sk.velocity.y,
+        };
+        let newVelocity = { ...sk.velocity };
+  
+        const skunkWidth = 200; // Image width
+        const skunkHeight = 200; // Image height
+  
+        const maxX = window.innerWidth - skunkWidth;
+        const maxY = window.innerHeight - skunkHeight;
+  
+        // X-axis boundary check
+        if (newPosition.x >= maxX || newPosition.x <= 0) {
+          newVelocity.x = -newVelocity.x;
+          newPosition.x = Math.max(0, Math.min(newPosition.x, maxX));
+        }
+  
+        // Y-axis boundary check
+        if (newPosition.y >= maxY || newPosition.y <= 0) {
+          newVelocity.y = -newVelocity.y;
+          newPosition.y = Math.max(0, Math.min(newPosition.y, maxY));
+        }
+  
+        return { ...sk, position: newPosition, velocity: newVelocity };
+      })
+    );
+  };
+  
+  
+
+  useEffect(() => {
+    const interval = setInterval(updatePositions, 20);
+    return () => clearInterval(interval);
+  }, []);
+
+  const addSkunk = () => {
+    setSkunk([...skunk, makeSkunk()]);
   };
 
   return (
     <div>
-      <h3>{question.text}</h3>
-      {question.options.map((option) => (
-        <button
-          key={option.id}
-          onClick={() => handleAnswerClick(option.id)}
-          className= "buttons"
-        >
-          {option.text}
-        </button>
-      ))}
-      {isCorrect !== null && (
-        <p>{isCorrect ? 'Correct!' : 'Incorrect!'}</p>
-      )}
+      <button className='button1' onClick={addSkunk}>Add Skunk</button>
+      <div id="game" style={{ position: 'relative', width: '100vw', height: '100vh', overflow:'hidden' }}>
+        {skunk.map((skunk) => (
+          <img
+            key={skunk.id}
+            src={skunkimage}
+            alt="skunk"
+            width={200}
+            style={{
+              position: 'absolute',
+              left: skunk.position.x,
+              top: skunk.position.y,
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
-}
+};
 
-export default QuizQuestion;
+export default SkunkGame;

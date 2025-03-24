@@ -14,7 +14,7 @@ h1, p {
 }
 
 h3 {
-text-align: center;
+  text-align: center;
   font-family: "Frijole", serif;
   font-size: 2em;
   color: rgb(255, 255, 255);
@@ -283,4 +283,22 @@ p1 {
   color: rgb(255, 255, 255);
   padding-top: 1px;
   margin: auto;
+}
+
+.skunk {
+  width: 40%;
+  height: auto;
+  text-align: center;
+  margin:0 auto; 
+  display: block;
+}
+
+.button1 {
+  border: 2px solid white;
+  background-color: black;
+  color: white;
+  font-size: 2em;
+  cursor: pointer;
+  padding: 20px 20px;
+  font-family: "Frijole", serif;
 }
